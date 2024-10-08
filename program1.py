@@ -1,20 +1,16 @@
-class Solution(object):
-    def isValid(self, s):
+class Solution:
+    def isValid(self, s: str) -> bool:
         """
-        :type s: str
-        :rtype: bool
+        Returns True if the input string is valid, False otherwise.
         """
-        pass
+        stack = []
+        mapping = {")": "(", "}": "{", "]": "["}
 
+        for char in s:
+            if char in mapping.values():  # Open bracket
+                stack.append(char)
+            elif char in mapping:  # Close bracket
+                if not stack or mapping[char] != stack.pop():
+                    return False
 
-
-
-
-
-
-    
-
-
-
-  
-
+        return not stack
